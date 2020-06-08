@@ -1,6 +1,6 @@
-# Null tortusity in porous medium 
+# Geometric Tortuosity 3d 
 
-![Project Image](https://github.com/eljosephavila123/Tortuosity-Null/blob/master/src/images/logo.png?raw=true)
+![Project Image](https://github.com/eljosephavila123/Geometric-Tortuosity-3D/blob/master/src/images/Geometric%20Tortuosity%203D.png?raw=true)
 
 > Porous media contains closed porosities and closed porosities.
 
