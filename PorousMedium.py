@@ -23,8 +23,6 @@ def generate_blobs():
     return padding_structure(blobs)
 
 
-
-
 def mesh_from_voxels(structure):
     verts, faces, norm, val = measure.marching_cubes_lewiner(structure)
     result = namedtuple('mesh', ('verts', 'faces', 'norm', 'val'))
@@ -38,7 +36,8 @@ def mesh_from_voxels(structure):
 def show_mesh_figure(mesh_object, title):
     fig = plt.figure()
     axes = mplot3d.Axes3D(fig)
-    mesh_fig = mplot3d.art3d.Poly3DCollection(mesh_object.verts[mesh_object.faces])
+    mesh_fig = mplot3d.art3d.Poly3DCollection(
+        mesh_object.verts[mesh_object.faces])
     mesh_fig.set_edgecolor('k')
     axes.add_collection3d(mesh_fig)
     scale = mesh_object.verts.flatten('F')
@@ -47,7 +46,8 @@ def show_mesh_figure(mesh_object, title):
 
 
 def save_mesh_to_stl(mesh_object, filename):
-    mesh_object = list(map(lambda x: (0, x.tolist(), 0), mesh_object.verts[mesh_object.faces]))
+    mesh_object = list(map(lambda x: (0, x.tolist(), 0),
+                           mesh_object.verts[mesh_object.faces]))
     mesh_object = np.array(mesh_object, dtype=mesh.Mesh.dtype)
     mesh_object = mesh.Mesh(mesh_object, remove_empty_areas=True)
     mesh_object.save(filename)
@@ -59,3 +59,5 @@ def structure_processing(voxels_structure, title):
     save_mesh_to_stl(mesh_object, f'{ title }.stl')
 
 
+structure_processing(generate_blobs(), 'blobs')
+plt.show()
