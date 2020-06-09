@@ -59,10 +59,3 @@ def structure_processing(voxels_structure, title):
     save_mesh_to_stl(mesh_object, f'{ title }.stl')
 
 
-def main():
-    structure_processing(generate_blobs(), 'blobs')
-    plt.show()
-
-
-if __name__ == '__main__':
-    main()
