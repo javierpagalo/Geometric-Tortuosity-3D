@@ -61,3 +61,5 @@ def structure_processing(voxels_structure, title):
 
 structure_processing(generate_blobs(), 'blobs')
 plt.show()
+
+

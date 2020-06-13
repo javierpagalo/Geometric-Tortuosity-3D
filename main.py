@@ -9,4 +9,4 @@ maze=np.logical_not(np.array(maze,dtype=int))
 maze=np.array(maze,dtype=int)
 
 result=astar(maze,start,end)
-print(result)
+
