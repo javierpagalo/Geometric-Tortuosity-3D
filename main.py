@@ -10,5 +10,5 @@ maze=np.logical_not(np.array(maze,dtype=int))
 maze=np.array(maze,dtype=int)
 print(maze)
 
-#result=astar(maze,start,end)
+result=astar(maze,start,end)
 
