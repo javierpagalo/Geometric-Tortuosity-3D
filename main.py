@@ -1,14 +1,29 @@
 from astar3D import*
 import numpy as np
+from Tortuosity import *
 import porespy as ps
-from other import *
+from PorousMedium import *
 
-start=(0,0,0)
-end=(9,9,9)
-maze=ps.generators.blobs(shape=[10, 10], porosity=0.5, blobiness=2)
+
+
+"""
+maze=ps.generators.blobs(shape=[10, 10,10], porosity=0.7, blobiness=0.5)
 maze=np.logical_not(np.array(maze,dtype=int))
 maze=np.array(maze,dtype=int)
-print(maze)
 
-result=astar(maze,start,end)
+result=findPoints(maze, "E")
+print(maze.shape)"""
+
+
+
+
+SIZE = 10
+SHAPE = list(SIZE for _ in range(3))
+for i in range(3):
+    generate,maze=generate_blobs(SHAPE,0.60,0.5)
+    maze=np.logical_not(np.array(maze,dtype=int))
+    maze=np.array(maze,dtype=int)
+    structure_processing(generate,"blobs"+str(i))
+    result=geometric_tortuosity(maze)
+    print(result)
 

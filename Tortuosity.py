@@ -1,6 +1,8 @@
 
 
-
+import numpy as np
+from astar3D import*
+import math
 
 
 def findPoints(medium, position):
@@ -15,9 +17,9 @@ def findPoints(medium, position):
     for i in range(ROW):
         for j in range(COL):
             if((maze[i][j] == 0) and position == "S"):
-                list_points.append((0, i, j))
+                list_points.append((i, j, 0))
             if((maze[i][j] == 0) and position == "E"):
-                list_points.append((final, i, j))
+                list_points.append(( i, j,final))
     return list_points
 
 def geometric_tortuosity(maze):
@@ -30,20 +32,29 @@ def geometric_tortuosity(maze):
     path_end_list = findPoints(maze,"E")
 
     total_caminos = []
-    total_paths = len(path_end(maze))*len(path_star(maze))
+    total_paths = len(path_end_list)*len(path_star_list)
     unit_caminos = 0
     array_path = np.array(maze)
     line = (array_path.shape)[2]
     for star in path_star_list:
         caminos = []
         for end in path_end_list:
-
+        
             path = astar(maze, star, end)
+          
             result = 0
-            for i in range(len(path)-1):
-                add = math.sqrt((path[i][0]-path[i+1][0])
-                                ** 2 + (path[i][1]-path[i+1][1])**2+  (path[i][2]-path[i+1][2])**2)
-                result += add
+            try:
+                ways=len(path)-1
+                for i in range(ways):
+                    add = math.sqrt((path[i][0]-path[i+1][0])
+                                ** 2 + (path[i][1]-path[i+1][1])**2+ 
+                                 (path[i][2]-path[i+1][2])**2)
+                    result += add
+            except :
+                pass
+            
+    
+            
             caminos.append(result)
             unit_caminos += 1
 
