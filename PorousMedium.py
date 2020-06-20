@@ -16,15 +16,15 @@ def padding_structure(structure):
     return np.pad(structure, pad_width=1, mode='constant', constant_values=False)
 
 
-def generate_blobs(SHAPE,porosity,blobiness):
-    blobs = ps.generators.blobs(shape=SHAPE, porosity=porosity, blobiness=blobiness)
-    maze=blobs
-    blobs=np.logical_not(blobs)
-    
+def generate_blobs(SHAPE, porosity, blobiness):
+    blobs = ps.generators.blobs(
+        shape=SHAPE, porosity=porosity, blobiness=blobiness)
+    maze = blobs
+    blobs = np.logical_not(blobs)
 
     #blobs = ps.filters.trim_floating_solid(blobs)
     #blobs = ps.filters.fill_blind_pores(blobs)
-    return padding_structure(blobs),maze
+    return padding_structure(blobs), maze
 
 
 def mesh_from_voxels(structure):
@@ -64,6 +64,4 @@ def structure_processing(voxels_structure, title):
 
 
 #structure_processing(generate_blobs(), 'blobs')
-#lt.show()
-
-
+# lt.show()

@@ -29,12 +29,14 @@ def generate_bundle_of_tubes():
 
 
 def generate_cylinders():
-    cylinders = ps.generators.cylinders(shape=SHAPE, radius=SIZE//25, ncylinders=50, phi_max=10, theta_max=10)
+    cylinders = ps.generators.cylinders(
+        shape=SHAPE, radius=SIZE//25, ncylinders=50, phi_max=10, theta_max=10)
     return padding_structure(cylinders)
 
 
 def generate_lattice_spheres():
-    lattice_spheres = ps.generators.lattice_spheres(shape=SHAPE, radius=SIZE//5, lattice='bcc')
+    lattice_spheres = ps.generators.lattice_spheres(
+        shape=SHAPE, radius=SIZE//5, lattice='bcc')
     return lattice_spheres
 
 
@@ -58,7 +60,8 @@ def mesh_from_voxels(structure):
 def show_mesh_figure(mesh_object, title):
     fig = plt.figure()
     axes = mplot3d.Axes3D(fig)
-    mesh_fig = mplot3d.art3d.Poly3DCollection(mesh_object.verts[mesh_object.faces])
+    mesh_fig = mplot3d.art3d.Poly3DCollection(
+        mesh_object.verts[mesh_object.faces])
     mesh_fig.set_edgecolor('k')
     axes.add_collection3d(mesh_fig)
     scale = mesh_object.verts.flatten('F')
@@ -67,7 +70,8 @@ def show_mesh_figure(mesh_object, title):
 
 
 def save_mesh_to_stl(mesh_object, filename):
-    mesh_object = list(map(lambda x: (0, x.tolist(), 0), mesh_object.verts[mesh_object.faces]))
+    mesh_object = list(map(lambda x: (0, x.tolist(), 0),
+                           mesh_object.verts[mesh_object.faces]))
     mesh_object = np.array(mesh_object, dtype=mesh.Mesh.dtype)
     mesh_object = mesh.Mesh(mesh_object, remove_empty_areas=True)
     mesh_object.save(filename)
@@ -84,7 +88,8 @@ def main():
     structure_processing(generate_bundle_of_tubes(), 'bundle_of_tubes')
     structure_processing(generate_cylinders(), 'cylinders')
     structure_processing(generate_lattice_spheres(), 'lattice_spheres')
-    structure_processing(generate_polydisperse_spheres(), 'polydisperse_spheres')
+    structure_processing(generate_polydisperse_spheres(),
+                         'polydisperse_spheres')
     plt.show()
 
 
