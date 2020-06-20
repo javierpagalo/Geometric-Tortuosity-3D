@@ -21,7 +21,7 @@
 
 Creating ReadMe's for your Github repository can be tedious.  I hope this template can save you time and effort as well as provide you with some consistency across your projects.
 
-![Project Image](https://github.com/eljosephavila123/Tortuosity-Null/blob/master/src/images/Imagen%201.png)
+![Project Image](https://github.com/eljosephavila123/Geometric-Tortuosity-3D/blob/master/src/images/porous.gif?raw=true)
 
 #### Technologies
 
