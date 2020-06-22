@@ -1,8 +1,7 @@
-
-
 import numpy as np
 from astar3D import*
 import math
+import random
 
 
 def findPoints(medium, position):
@@ -23,6 +22,15 @@ def findPoints(medium, position):
     return list_points
 
 
+def valuepath(tupla):
+    i = path.index(tupla)
+    if i == len(path) - 1:
+        return 0
+    add = math.sqrt((path[i][0] - path[i + 1][0]) ** 2 + (path[i][1] - path[i + 1][1]) ** 2 + (
+        path[i][2] - path[i + 1][2]) ** 2)
+    return add
+
+
 def geometric_tortuosity(maze):
     """
     The geometric tortuosity of a porous medium returns
@@ -37,27 +45,29 @@ def geometric_tortuosity(maze):
     unit_caminos = 0
     array_path = np.array(maze)
     line = (array_path.shape)[2]
+    global path
+    i=0
     for star in path_star_list:
         caminos = []
-        for end in path_end_list:
+        
+        
+        end=random.choice(path_end_list)
+        path = astar(maze, star, end)
+        print(i)
+        i+=1
+        result = 0
+        # caminos.append(path)
+        # total_caminos.append(caminos)
+        try:
+            x = map(valuepath, path)
+            result = sum(x)
+        except:
+            pass
 
-            path = astar(maze, star, end)
+        caminos.append(result)
+        unit_caminos += 1
 
-            result = 0
-            try:
-                ways = len(path)-1
-                for i in range(ways):
-                    add = math.sqrt((path[i][0]-path[i+1][0])
-                                    ** 2 + (path[i][1]-path[i+1][1])**2 +
-                                    (path[i][2]-path[i+1][2])**2)
-                    result += add
-            except:
-                pass
-
-            caminos.append(result)
-            unit_caminos += 1
-
-        total_caminos.append(min(caminos))
+        total_caminos.append(np.mean(caminos))
 
     valor = (np.mean(np.array(total_caminos)))
     geometric_tortusity = valor/(int(line)-1)
