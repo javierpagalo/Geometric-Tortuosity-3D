@@ -1,10 +1,13 @@
 """TESTING"""
 from NetworkPorous import *
+from PorousMedium import *
 
 
+pading,maze=generate_blobs([10,10],0.5,0.5)
 
-maze=[[1,0,0,0],[1,1,0,1],[1,0,1,0],[1,0,0,1]]
 ROW=len(maze)
 COL=len(maze)
 resultado=Graph(ROW,COL,maze).countPaths()
-print(resultado)
+
+for x in resultado:
+    print(sum(x))
