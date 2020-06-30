@@ -6,16 +6,10 @@
 
 ---
 
-### Table of Contents
 
 
-- [Description](#description)
-- [Explanation](#how-to-use)
-- [References](#references)
-- [License](#license)
-- [Author Info](#author-info)
 
----
+
 
 ## Description
 
