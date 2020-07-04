@@ -22,13 +22,13 @@ print(maze.shape)"""
  
 """SIZE" is the size that the porous medium will have, NUMBER_MEDIUM the media quantities 
 They will be saved in the 3dmodels folder """
-SIZE = 50
+SIZE = 40
 SHAPE = list(SIZE for _ in range(3))
 NUMBER_MEDIUM=1
 start=time.time()
 for i in range(NUMBER_MEDIUM):
     startf=time.time()
-    generate, maze = generate_blobs(SHAPE, 0.90, 0.5)
+    generate, maze = generate_blobs(SHAPE, 0.80, 0.5)
     maze = np.logical_not(np.array(maze, dtype=int))
     maze = np.array(maze, dtype=int)
     #structure_processing(generate, "blobs"+str(i))

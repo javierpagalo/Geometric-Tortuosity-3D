@@ -53,13 +53,13 @@ def geometric_tortuosity(maze):
     listEndPoints = endPoints(maze[-1],"E")
     #print(path_star_list)
     #print(listEndPoints)
-    print(len(listEndPoints)*len(path_star_list))
+    toTal=len(listEndPoints)*len(path_star_list)
 
 
     
     for star in path_star_list:
         for end in listEndPoints:
-            print("camino:"+str(i))
+            print("camino:"+str(i+1)+"/"+str(toTal))
             caminos = []
             
             path = astar(maze, star, end)
