@@ -7,6 +7,7 @@ import shutil
 import time
 
 import time
+from visualation import *
 
 
 
@@ -18,20 +19,22 @@ maze=np.array(maze,dtype=int)
 
 result=findPoints(maze, "E")
 print(maze.shape)"""
-
+ 
 """SIZE" is the size that the porous medium will have, NUMBER_MEDIUM the media quantities 
 They will be saved in the 3dmodels folder """
-SIZE = 50
+SIZE = 10
 SHAPE = list(SIZE for _ in range(1))
 NUMBER_MEDIUM=1
 start=time.time()
 for i in range(NUMBER_MEDIUM):
     startf=time.time()
-    generate, maze = generate_blobs(SHAPE, 0.60, 0.5)
+    generate, maze = generate_blobs(SHAPE, 0.85, 0.1)
     maze = np.logical_not(np.array(maze, dtype=int))
     maze = np.array(maze, dtype=int)
     #structure_processing(generate, "blobs"+str(i))
-    result = geometric_tortuosity(maze)
+    result ,graphs= geometric_tortuosity(maze)
+    #show_paths_on_porous_medium(graphs)
+
     #shutil.move("blobs"+str(i)+".stl", "3dmodels/blobs"+str(i)+".stl")
     endf=time.time()
     tiempof=endf-startf

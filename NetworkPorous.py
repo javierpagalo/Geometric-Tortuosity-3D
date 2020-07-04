@@ -123,3 +123,14 @@ class Graph:
        
         return processing
 
+
+def convert_individual_paths(graph):
+    "Convierte caminos individuales de los nodos muertos  del medio poroso"
+    total=[]
+    total.append(toList((graph[0]-1)*-1))
+    for i  in range(len(graph)-1):
+        rest1=np.array((graph[i]-1)*-1)
+        rest2=np.array((graph[i+1]-1)*-1)
+        rs=rest2-rest1
+        total.append(toList(rs))
+    return total

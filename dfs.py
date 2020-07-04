@@ -9,5 +9,3 @@ ROW=len(maze)
 COL=len(maze)
 resultado=Graph(ROW,COL,maze).countPaths()
 
-for x in resultado:
-    print(sum(x))

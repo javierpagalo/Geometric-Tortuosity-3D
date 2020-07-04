@@ -37,6 +37,7 @@ def geometric_tortuosity(maze):
     :param maze:
     :return geometric tortuosity:
     """
+    pathsTotal=[]
     path_star_list = findPoints(maze, "S")
     path_end_list = findPoints(maze, "E")
 
@@ -49,11 +50,13 @@ def geometric_tortuosity(maze):
     i=0
     for star in path_star_list:
         caminos = []
-        
-        
+        """OJO CAMBIAR ESTO PLEASE""" 
+
         end=random.choice(path_end_list)
         path = astar(maze, star, end)
-        print(i)
+        if path!=None:
+            pathsTotal.append(path)
+
         i+=1
         result = 0
         # caminos.append(path)
@@ -71,4 +74,4 @@ def geometric_tortuosity(maze):
 
     valor = (np.mean(np.array(total_caminos)))
     geometric_tortusity = valor/(int(line)-1)
-    return geometric_tortusity
+    return geometric_tortusity,pathsTotal
