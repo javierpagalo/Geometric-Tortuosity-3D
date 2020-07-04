@@ -2,7 +2,7 @@ import numpy as np
 from astar3D import*
 import math
 import random
-
+from MatrixDivider import*
 
 def findPoints(medium, position):
     list_points = []
@@ -48,29 +48,30 @@ def geometric_tortuosity(maze):
     line = (array_path.shape)[2]
     global path
     i=0
+    print(maze[-1].shape)
+    listEndPoints=endPoints(maze[-1])
     for star in path_star_list:
-        caminos = []
-        """OJO CAMBIAR ESTO PLEASE""" 
+        for end in listEndPoints:
+            caminos = []
+            """OJO CAMBIAR ESTO PLEASE""" 
+            path = astar(maze, star, end)
+            if path!=None:
+                pathsTotal.append(path)
 
-        end=random.choice(path_end_list)
-        path = astar(maze, star, end)
-        if path!=None:
-            pathsTotal.append(path)
+            i+=1
+            result = 0
+            # caminos.append(path)
+            # total_caminos.append(caminos)
+            try:
+                x = map(valuepath, path)
+                result = sum(x)
+            except:
+                pass
 
-        i+=1
-        result = 0
-        # caminos.append(path)
-        # total_caminos.append(caminos)
-        try:
-            x = map(valuepath, path)
-            result = sum(x)
-        except:
-            pass
+            caminos.append(result)
+            unit_caminos += 1
 
-        caminos.append(result)
-        unit_caminos += 1
-
-        total_caminos.append(np.mean(caminos))
+            total_caminos.append(np.mean(caminos))
 
     valor = (np.mean(np.array(total_caminos)))
     geometric_tortusity = valor/(int(line)-1)

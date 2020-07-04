@@ -22,8 +22,9 @@ print(maze.shape)"""
  
 """SIZE" is the size that the porous medium will have, NUMBER_MEDIUM the media quantities 
 They will be saved in the 3dmodels folder """
-SIZE = 10
-SHAPE = list(SIZE for _ in range(1))
+SIZE = 100
+SHAPE = list(SIZE for _ in range(3))
+print(SHAPE)
 NUMBER_MEDIUM=1
 start=time.time()
 for i in range(NUMBER_MEDIUM):
