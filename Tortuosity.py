@@ -4,6 +4,7 @@ import math
 import random
 from MatrixDivider import*
 
+
 def findPoints(medium, position):
     list_points = []
     if(position == "S"):
@@ -37,26 +38,36 @@ def geometric_tortuosity(maze):
     :param maze:
     :return geometric tortuosity:
     """
-    pathsTotal=[]
+    pathsTotal = []
     path_star_list = findPoints(maze, "S")
-    path_end_list = findPoints(maze, "E")
+
 
     total_caminos = []
-    total_paths = len(path_end_list)*len(path_star_list)
     unit_caminos = 0
     array_path = np.array(maze)
     line = (array_path.shape)[2]
     global path
-    i=0
-    print(maze[-1].shape)
-    listEndPoints=endPoints(maze[-1])
+    i = 0
+    path_star_list=endPoints(maze[0],'S')
+    #print(path_star_list)
+    listEndPoints = endPoints(maze[-1],"E")
+    #print(path_star_list)
+    #print(listEndPoints)
+    print(len(listEndPoints)*len(path_star_list))
+
+
+    
     for star in path_star_list:
         for end in listEndPoints:
+            print("camino:"+str(i))
             caminos = []
-            """OJO CAMBIAR ESTO PLEASE""" 
+            
             path = astar(maze, star, end)
+        
+            
             if path!=None:
                 pathsTotal.append(path)
+                
 
             i+=1
             result = 0
@@ -67,7 +78,7 @@ def geometric_tortuosity(maze):
                 result = sum(x)
             except:
                 pass
-
+        
             caminos.append(result)
             unit_caminos += 1
 
@@ -76,3 +87,5 @@ def geometric_tortuosity(maze):
     valor = (np.mean(np.array(total_caminos)))
     geometric_tortusity = valor/(int(line)-1)
     return geometric_tortusity,pathsTotal
+    #return "f","f" 
+    

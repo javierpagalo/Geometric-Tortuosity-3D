@@ -67,15 +67,16 @@ def astar(maze, start, end, allow_diagonal_movement=False):
     max_iterations = (len(maze[0]) * len(maze) // 2)
 
     # what squares do we search
-    adjacent_squares = ((0,0,1),(0,0,-1), (0, 1 ,0), (0, -1 ,0), (1, 0 , 0), (-1, 0 , 0),)
+    adjacent_squares = ((0, 0, 1), (0, 0, -1), (0, 1, 0),
+                        (0, -1, 0), (1, 0, 0), (-1, 0, 0),)
     if allow_diagonal_movement:
-        
-        adjacent_squares=((0,0,1),(0,0,-1), (0, 1 ,0), (0, -1 ,0), (1, 0 , 0), (-1, 0 , 0),
-                         (1,1,1),(-1,-1,-1),(-1,1,-1),(1,-1,1),(1,1,-1),
-                         (-1,-1,1),(-1,1,-1),(1,-1,-1),(1,0,1),(-1,0,-1),
-                         (0,1,1),(0,-1,-1),(1,1,0),(-1,-1,0),)
-        
-        
+
+        adjacent_squares = ((0, 0, 1), (0, 0, -1), (0, 1, 0), (0, -1, 0), (1, 0, 0), (-1, 0, 0),
+                            (1, 1, 1), (-1, -1, -1), (-1,
+                                                      1, -1), (1, -1, 1), (1, 1, -1),
+                            (-1, -1, 1), (-1, 1, -1), (1, -
+                                                       1, -1), (1, 0, 1), (-1, 0, -1),
+                            (0, 1, 1), (0, -1, -1), (1, 1, 0), (-1, -1, 0),)
 
     # Loop until you find the end
     while len(open_list) > 0:
@@ -102,7 +103,7 @@ def astar(maze, start, end, allow_diagonal_movement=False):
 
             # Get node position
             node_position = (
-                current_node.position[0] + new_position[0], current_node.position[1] + new_position[1],current_node.position[2] + new_position[2])
+                current_node.position[0] + new_position[0], current_node.position[1] + new_position[1], current_node.position[2] + new_position[2])
 
             # Make sure within range
             if node_position[0] > (len(maze) - 1) or node_position[0] < 0 or node_position[1] > (len(maze[len(maze)-1]) - 1) or node_position[1] < 0 or node_position[2] > (len(maze) - 1) or node_position[2] < 0:
