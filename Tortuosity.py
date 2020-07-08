@@ -41,35 +41,30 @@ def geometric_tortuosity(maze):
     pathsTotal = []
     path_star_list = findPoints(maze, "S")
 
-
     total_caminos = []
     unit_caminos = 0
     array_path = np.array(maze)
     line = (array_path.shape)[2]
     global path
     i = 0
-    path_star_list=endPoints(maze[0],'S')
-    #print(path_star_list)
-    listEndPoints = endPoints(maze[-1],"E")
-    #print(path_star_list)
-    #print(listEndPoints)
-    toTal=len(listEndPoints)*len(path_star_list)
+    path_star_list = endPoints(maze[0], 'S')
+    # print(path_star_list)
+    listEndPoints = endPoints(maze[-1], "E")
+    # print(path_star_list)
+    # print(listEndPoints)
+    toTal = len(listEndPoints)*len(path_star_list)
 
-
-    
     for star in path_star_list:
+        caminos = []
         for end in listEndPoints:
             print("camino:"+str(i+1)+"/"+str(toTal))
-            caminos = []
-            
-            path = astar(maze, star, end)
-        
-            
-            if path!=None:
-                pathsTotal.append(path)
-                
 
-            i+=1
+            path = astar(maze, star, end)
+
+            if path != None:
+                pathsTotal.append(path)
+
+            i += 1
             result = 0
             # caminos.append(path)
             # total_caminos.append(caminos)
@@ -78,14 +73,13 @@ def geometric_tortuosity(maze):
                 result = sum(x)
             except:
                 pass
-        
+
             caminos.append(result)
             unit_caminos += 1
 
-            total_caminos.append(np.mean(caminos))
+        total_caminos.append(min(caminos))
 
     valor = (np.mean(np.array(total_caminos)))
     geometric_tortusity = valor/(int(line)-1)
-    return geometric_tortusity,pathsTotal
-    #return "f","f" 
-    
+    return geometric_tortusity, pathsTotal
+    # return "f","f"

@@ -22,18 +22,21 @@ print(maze.shape)"""
  
 """SIZE" is the size that the porous medium will have, NUMBER_MEDIUM the media quantities 
 They will be saved in the 3dmodels folder """
-SIZE = 40
+SIZE = 50
 SHAPE = list(SIZE for _ in range(3))
-NUMBER_MEDIUM=1
+NUMBER_MEDIUM=5
 start=time.time()
+tortuosity_test=[]
 for i in range(NUMBER_MEDIUM):
     startf=time.time()
-    generate, maze = generate_blobs(SHAPE, 0.80, 0.5)
+    generate, maze = generate_blobs(SHAPE, 0.60, 0.5)
     maze = np.logical_not(np.array(maze, dtype=int))
     maze = np.array(maze, dtype=int)
     #structure_processing(generate, "blobs"+str(i))
     result,graphs= geometric_tortuosity(maze)
-    print(result)
+    #print(result)
+    tortuosity_test.append(result)
+    
     #show_paths_on_porous_medium(graphs)
 
     #shutil.move("blobs"+str(i)+".stl", "3dmodels/blobs"+str(i)+".stl")
@@ -42,5 +45,6 @@ for i in range(NUMBER_MEDIUM):
     print(str(result) +"------"+str(tiempof))
 end=time.time()
 tiempo=end-start
-print("El tiempo de ejucion de "+str(NUMBER_MEDIUM)+":"+str(tiempo))
+print("El tiempo de ejecucion de "+str(NUMBER_MEDIUM)+":"+str(tiempo))
+print(tortuosity_test)
 
