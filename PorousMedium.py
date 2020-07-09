@@ -1,6 +1,5 @@
 import porespy as ps
 import numpy as np
-from scipy import stats
 from skimage import measure
 from collections import namedtuple
 import matplotlib.pyplot as plt
