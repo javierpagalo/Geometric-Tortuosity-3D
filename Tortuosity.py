@@ -71,7 +71,10 @@ def geometric_tortuosity(maze):
                 x = map(valuepath, path)
                 result = sum(x)
             except:
-                pass
+                print("No se hallo camino")
+                continue
+                
+            
 
             caminos.append(result)
             unit_caminos += 1
