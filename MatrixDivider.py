@@ -1,6 +1,5 @@
 import numpy as np
-from networkPorous import*
-import math
+from NetworkPorous import*
 
 
 # Divide la matriz en una cantidad de slices, y bota una lista de arrays
@@ -49,6 +48,9 @@ def dict2DMatrix(array, suma):
 count = 0
 
 
+"""----------------------------------------------------------"""
+
+
 def maxPorous(resultado):
     newdata = []
     comprobador = 0
@@ -60,7 +62,7 @@ def maxPorous(resultado):
     return newdata
 
 
-
+"""----------------------------------------------------------"""
 
 
 def pointmedium(maze):
@@ -111,5 +113,5 @@ def endPoints(medium,data):
     
 
 
-
+"""TESTING"""
 

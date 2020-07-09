@@ -1,9 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+from matplotlib import cm
 
 
 def path_format(path):
-
+    pathFormat = []
     pointers = np.array(path)
 
     x = pointers[:, 0]
@@ -26,7 +28,12 @@ def show_paths_on_porous_medium(paths):
     plt.ylabel("Y axis label")
 
     plt.show()
- 
+    """
+    fig, ax = plt.subplots(subplot_kw={'projection': '3d'})
+    for path in paths:
+        ax.plot(path[0], path[1],path[2], color="red")
+    plt.show()"""
+
 
 paths = [[(1, 1, 1), (9, 1, 3), (7, 4, 2), (1, 2, 1), (3, 4, 5)], [
     (1, 1, 5), (9, 4, 3), (7, 5, 2), (1, 2, 1), (1, 4, 4)]]

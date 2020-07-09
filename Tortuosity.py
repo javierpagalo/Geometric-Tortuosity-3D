@@ -1,7 +1,8 @@
 import numpy as np
 from astar3D import*
 import math
-from matrixDivider import*
+import random
+from MatrixDivider import*
 
 
 def findPoints(medium, position):
@@ -71,10 +72,7 @@ def geometric_tortuosity(maze):
                 x = map(valuepath, path)
                 result = sum(x)
             except:
-                print("No se hallo camino")
-                continue
-                
-            
+                pass
 
             caminos.append(result)
             unit_caminos += 1
