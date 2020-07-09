@@ -1,7 +1,7 @@
 import numpy as np
 from astar3D import*
 import math
-from MatrixDivider import*
+from matrixDivider import*
 
 
 def findPoints(medium, position):

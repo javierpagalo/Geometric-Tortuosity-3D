@@ -2,7 +2,7 @@ from astar3D import*
 import numpy as np
 from Tortuosity import *
 
-from PorousMedium import *
+from porousMedium import *
 
 import time
 from visualation import *
@@ -10,13 +10,6 @@ from visualation import *
 
 
 
-"""
-maze=ps.generators.blobs(shape=[10, 10,10], porosity=0.7, blobiness=0.5)
-maze=np.logical_not(np.array(maze,dtype=int))
-maze=np.array(maze,dtype=int)
-
-result=findPoints(maze, "E")
-print(maze.shape)"""
  
 """SIZE" is the size that the porous medium will have, NUMBER_MEDIUM the media quantities 
 They will be saved in the 3dmodels folder """

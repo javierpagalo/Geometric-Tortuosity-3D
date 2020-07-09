@@ -1,5 +1,5 @@
 import numpy as np
-from NetworkPorous import*
+from networkPorous import*
 
 
 # Divide la matriz en una cantidad de slices, y bota una lista de arrays
