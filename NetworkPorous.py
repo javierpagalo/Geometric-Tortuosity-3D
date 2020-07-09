@@ -1,6 +1,5 @@
 import math
 import numpy as np
-import math
 
 
 def toList(array):

@@ -1,7 +1,6 @@
 import numpy as np
 from astar3D import*
 import math
-import random
 from MatrixDivider import*
 
 
