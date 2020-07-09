@@ -2,8 +2,7 @@ from astar3D import*
 import numpy as np
 from Tortuosity import *
 
-from porousMedium import *
-
+from porousMedium import generate_blobs
 import time
 from visualation import *
 
